@@ -37,7 +37,7 @@ export default class RemoveAction {
             if (this.inNavigationPath(object)) {
                 this.navigateTo(objectPath.slice(1));
             }
-        }).catch(() =>{});
+        }).catch(() => {});
     }
 
     showConfirmDialog(object) {
@@ -62,8 +62,8 @@ export default class RemoveAction {
                         }
                     }
                 ]
-            })
-        })
+            });
+        });
     }
 
     inNavigationPath(object) {

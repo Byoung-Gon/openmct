@@ -92,6 +92,7 @@ export default {
             if (!this.ascending) {
                 sortedItems = sortedItems.reverse();
             }
+
             return sortedItems;
         }
     },
@@ -116,5 +117,5 @@ export default {
                 );
         }
     }
-}
+};
 </script>

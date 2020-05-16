@@ -30,7 +30,6 @@
 </div>
 </template>
 
-
 <script>
 import ContextMenuDropDown from '../../ui/components/contextMenuDropDown.vue';
 import NotebookMenuSwitcher from '@/plugins/notebook/components/notebook-menu-switcher.vue';
@@ -88,5 +87,5 @@ export default {
             this.$emit('setView', view);
         }
     }
-}
+};
 </script>

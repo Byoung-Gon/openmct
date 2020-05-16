@@ -69,13 +69,13 @@
 <script>
 import uuid from 'uuid';
 
-import SubobjectView from './SubobjectView.vue'
-import TelemetryView from './TelemetryView.vue'
-import BoxView from './BoxView.vue'
-import TextView from './TextView.vue'
-import LineView from './LineView.vue'
-import ImageView from './ImageView.vue'
-import EditMarquee from './EditMarquee.vue'
+import SubobjectView from './SubobjectView.vue';
+import TelemetryView from './TelemetryView.vue';
+import BoxView from './BoxView.vue';
+import TextView from './TextView.vue';
+import LineView from './LineView.vue';
+import ImageView from './ImageView.vue';
+import EditMarquee from './EditMarquee.vue';
 
 const ITEM_TYPE_VIEW_MAP = {
     'subobject-view': SubobjectView,
@@ -116,6 +116,7 @@ export default {
     },
     data() {
         let domainObject = JSON.parse(JSON.stringify(this.domainObject));
+
         return {
             internalDomainObject: domainObject,
             initSelectIndex: undefined,
@@ -138,6 +139,7 @@ export default {
             let selectionPath = this.selection[0];
             let singleSelectedLine = this.selection.length === 1 &&
                     selectionPath[0].context.layoutItem && selectionPath[0].context.layoutItem.type === 'line-view';
+
             return selectionPath && selectionPath.length > 1 && !singleSelectedLine;
         }
     },
@@ -175,7 +177,9 @@ export default {
                 if ($event) {
                     $event.stopImmediatePropagation();
                 }
+
                 this.dragInProgress = false;
+
                 return;
             }
         },
@@ -517,5 +521,5 @@ export default {
             this.mutate(`configuration.items[${index}]`, item);
         }
     }
-}
+};
 </script>

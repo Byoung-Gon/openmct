@@ -73,6 +73,7 @@ define(['./Type'], function (Type) {
             if (!typeDef.name) {
                 typeDef.name = typeDef.label;
             }
+
             delete typeDef.label;
         }
     };
@@ -104,9 +105,8 @@ define(['./Type'], function (Type) {
                 let def = Type.definitionFromLegacyDefinition(type);
                 this.addType(type.key, def);
             });
-    }
+    };
 
     return TypeRegistry;
 });
-
 

@@ -182,7 +182,7 @@ export default {
             isFixed: this.openmct.time.clock() === undefined,
             isUTCBased: timeSystem.isUTCBased,
             showDatePicker: false
-        }
+        };
     },
     mounted() {
         this.setTimeSystem(JSON.parse(JSON.stringify(this.openmct.time.timeSystem())));
@@ -190,7 +190,7 @@ export default {
         this.openmct.time.on('bounds', this.setViewFromBounds);
         this.openmct.time.on('timeSystem', this.setTimeSystem);
         this.openmct.time.on('clock', this.setViewFromClock);
-        this.openmct.time.on('clockOffsets', this.setViewFromOffsets)
+        this.openmct.time.on('clockOffsets', this.setViewFromOffsets);
     },
     methods: {
         setTimeSystem(timeSystem) {
@@ -210,8 +210,10 @@ export default {
                     end: endOffset
                 });
             }
+
             if ($event) {
                 $event.preventDefault();
+
                 return false;
             }
         },
@@ -225,8 +227,10 @@ export default {
                     end: end
                 });
             }
+
             if ($event) {
                 $event.preventDefault();
+
                 return false;
             }
         },
@@ -286,10 +290,12 @@ export default {
                 if (validationResult !== true) {
                     input.setCustomValidity(validationResult);
                     input.title = validationResult;
+
                     return false;
                 } else {
                     input.setCustomValidity('');
                     input.title = '';
+
                     return true;
                 }
             });
@@ -318,10 +324,12 @@ export default {
                 if (validationResult !== true) {
                     input.setCustomValidity(validationResult);
                     input.title = validationResult;
+
                     return false;
                 } else {
                     input.setCustomValidity('');
                     input.title = '';
+
                     return true;
                 }
             });
@@ -347,5 +355,5 @@ export default {
             this.submitForm();
         }
     }
-}
+};
 </script>

@@ -134,7 +134,7 @@ export default {
             showTime: 0,
             showNav: false,
             sidebarCoversEntries: false
-        }
+        };
     },
     computed: {
         filteredAndSortedEntries() {
@@ -142,13 +142,13 @@ export default {
             const pageEntries = getNotebookEntries(this.internalDomainObject, this.selectedSection, this.selectedPage) || [];
 
             const hours = parseInt(this.showTime, 10);
-            const filteredPageEntriesByTime = hours
-                ? pageEntries.filter(entry => (filterTime - entry.createdOn) <= hours * 60 * 60 * 1000)
-                : pageEntries;
+            const filteredPageEntriesByTime = hours ?
+                pageEntries.filter(entry => (filterTime - entry.createdOn) <= hours * 60 * 60 * 1000) :
+                pageEntries;
 
-            return this.defaultSort === 'oldest'
-                ? filteredPageEntriesByTime
-                : [...filteredPageEntriesByTime].reverse();
+            return this.defaultSort === 'oldest' ?
+                filteredPageEntriesByTime :
+                [...filteredPageEntriesByTime].reverse();
         },
         pages() {
             return this.getPages() || [];
@@ -192,7 +192,7 @@ export default {
     updated: function () {
         this.$nextTick(function () {
             this.focusOnEntryId();
-        })
+        });
     },
     methods: {
         addDefaultClass() {
@@ -243,7 +243,7 @@ export default {
                 notebookMeta,
                 section,
                 page
-            }
+            };
         },
         dragOver(event) {
             event.preventDefault();
@@ -306,7 +306,7 @@ export default {
             const isPhone = Array.from(classList).includes('phone');
             const isTablet = Array.from(classList).includes('tablet');
             const isPortrait = window.screen.orientation.type.includes('portrait');
-            const isInLayout = !!this.$el.closest('.c-so-view');
+            const isInLayout = Boolean(this.$el.closest('.c-so-view'));
             const sidebarCoversEntries = (isPhone || (isTablet && isPortrait) || isInLayout);
             this.sidebarCoversEntries = sidebarCoversEntries;
         },
@@ -391,7 +391,7 @@ export default {
         },
         navigateToSectionPage() {
             const { pageId, sectionId } = this.openmct.router.getParams();
-            if(!pageId || !sectionId) {
+            if (!pageId || !sectionId) {
                 return;
             }
 
@@ -452,8 +452,8 @@ export default {
             }
 
             const notebookStorage = getDefaultNotebook();
-            if (!notebookStorage
-                    || notebookStorage.notebookMeta.identifier.key !== this.internalDomainObject.identifier.key) {
+            if (!notebookStorage ||
+                    notebookStorage.notebookMeta.identifier.key !== this.internalDomainObject.identifier.key) {
                 return;
             }
 
@@ -461,7 +461,7 @@ export default {
             const page = pages.find(p => p.id === id);
             if (!page && defaultNotebookPage.id === id) {
                 this.defaultSectionId = null;
-                this.defaultPageId = null
+                this.defaultPageId = null;
                 this.removeDefaultClass(this.internalDomainObject);
                 clearDefaultNotebook();
 
@@ -480,8 +480,8 @@ export default {
             }
 
             const notebookStorage = getDefaultNotebook();
-            if (!notebookStorage
-                    || notebookStorage.notebookMeta.identifier.key !== this.internalDomainObject.identifier.key) {
+            if (!notebookStorage ||
+                    notebookStorage.notebookMeta.identifier.key !== this.internalDomainObject.identifier.key) {
                 return;
             }
 
@@ -489,7 +489,7 @@ export default {
             const section = sections.find(s => s.id === id);
             if (!section && defaultNotebookSection.id === id) {
                 this.defaultSectionId = null;
-                this.defaultPageId = null
+                this.defaultPageId = null;
                 this.removeDefaultClass(this.internalDomainObject);
                 clearDefaultNotebook();
 
@@ -560,5 +560,5 @@ export default {
             this.updateDefaultNotebookSection(sections, id);
         }
     }
-}
+};
 </script>

@@ -70,6 +70,7 @@ define(
                             $scope.structure.validate) {
                     if (!$scope.structure.validate(domainObject)) {
                         setLocatingObject(priorObject, undefined);
+
                         return;
                     }
                 }
@@ -78,7 +79,7 @@ define(
                 if ($scope.ngModelController) {
                     $scope.ngModelController.$setValidity(
                         'composition',
-                        !!$scope.treeModel.selectedObject
+                        Boolean($scope.treeModel.selectedObject)
                     );
                 }
             }

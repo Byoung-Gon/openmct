@@ -34,12 +34,14 @@ define([], function () {
 
     function parentOf(domainObject) {
         var context = domainObject.getCapability('context');
+
         return context && context.getParent();
     }
 
     function allowMutation(domainObject) {
         var type = domainObject && domainObject.getCapability('type');
-        return !!(type && type.hasFeature('creation'));
+
+        return Boolean(type && type.hasFeature('creation'));
     }
 
     function selectedObject(context) {

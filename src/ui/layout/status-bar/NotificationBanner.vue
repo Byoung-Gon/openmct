@@ -48,7 +48,7 @@ let maximizedDialog = undefined;
 let minimizeButton = {
     label: 'Dismiss',
     callback: dismissMaximizedDialog
-}
+};
 
 function dismissMaximizedDialog() {
     if (maximizedDialog) {
@@ -80,7 +80,7 @@ export default {
                 progressText: undefined,
                 minimized: undefined
             }
-        }
+        };
     },
     computed: {
         progressWidth() {
@@ -99,6 +99,7 @@ export default {
                 activeNotification.off('minimized', this.minimized);
                 activeNotification.off('destroy', this.destroyActiveNotification);
             }
+
             activeNotification = notification;
             this.clearModel();
             this.applyModel(notification.model);
@@ -158,10 +159,10 @@ export default {
                     iconClass: this.activeModel.severity,
                     buttons: [minimizeButton],
                     ...this.activeModel
-                })
+                });
             }
         }
     }
 
-}
+};
 </script>

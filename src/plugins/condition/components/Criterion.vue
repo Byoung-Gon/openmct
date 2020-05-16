@@ -139,11 +139,12 @@ export default {
             operationFormat: '',
             enumerations: [],
             inputTypes: INPUT_TYPES
-        }
+        };
     },
     computed: {
         setRowLabel: function () {
-            let operator = this.trigger === 'all' ? 'and ': 'or ';
+            let operator = this.trigger === 'all' ? 'and ' : 'or ';
+
             return (this.index !== 0 ? operator : '') + 'when';
         },
         filteredOps: function () {
@@ -156,11 +157,13 @@ export default {
                     if (this.filteredOps[i].appliesTo.length) {
                         type = this.inputTypes[this.filteredOps[i].appliesTo[0]];
                     } else {
-                        type = 'text'
+                        type = 'text';
                     }
+
                     break;
                 }
             }
+
             return type;
         }
     },
@@ -177,7 +180,7 @@ export default {
     },
     methods: {
         checkTelemetry() {
-            if(this.criterion.telemetry) {
+            if (this.criterion.telemetry) {
                 if (this.criterion.telemetry === 'any' || this.criterion.telemetry === 'all') {
                     this.updateMetadataOptions();
                 } else {
@@ -213,6 +216,7 @@ export default {
                     this.operationFormat = 'number';
                 }
             }
+
             this.updateInputVisibilityAndValues();
         },
         updateMetadataOptions(ev) {
@@ -220,6 +224,7 @@ export default {
                 this.clearDependentFields(ev.target);
                 this.persist();
             }
+
             if (this.criterion.telemetry) {
                 const telemetry = (this.criterion.telemetry === 'all' || this.criterion.telemetry === 'any') ? this.telemetry : [{
                     identifier: this.criterion.telemetry
@@ -240,9 +245,10 @@ export default {
             if (!this.telemetryMetadataOptions) {
                 this.telemetryMetadataOptions = options;
             }
+
             options.forEach((option) => {
                 const found = this.telemetryMetadataOptions.find((metadataOption) => {
-                    return (metadataOption.key && (metadataOption.key === option.key)) && (metadataOption.name && (metadataOption.name === option.name))
+                    return (metadataOption.key && (metadataOption.key === option.key)) && (metadataOption.name && (metadataOption.name === option.name));
                 });
                 if (!found) {
                     this.telemetryMetadataOptions.push(option);
@@ -267,6 +273,7 @@ export default {
                     this.inputCount = this.filteredOps[i].inputCount;
                 }
             }
+
             if (!this.inputCount) {
                 this.criterion.input = [];
             }
@@ -284,6 +291,7 @@ export default {
                 if (this.enumerations.length && !this.criterion.input.length) {
                     this.criterion.input = [this.enumerations[0].value.toString()];
                 }
+
                 this.inputCount = 0;
             }
         },

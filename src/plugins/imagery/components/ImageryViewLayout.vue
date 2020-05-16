@@ -67,7 +67,7 @@ export default {
         return {
             autoScroll: true,
             date: '',
-            filters : {
+            filters: {
                 brightness: 100,
                 contrast: 100
             },
@@ -80,7 +80,7 @@ export default {
             isPaused: false,
             requestCount: 0,
             timeFormat: ''
-        }
+        };
     },
     mounted() {
         this.keystring = this.openmct.objects.makeKeyString(this.domainObject.identifier);
@@ -116,14 +116,14 @@ export default {
                 this.time;
         },
         handleScroll() {
-            const thumbsWrapper = this.$refs.thumbsWrapper
+            const thumbsWrapper = this.$refs.thumbsWrapper;
             if (!thumbsWrapper) {
                 return;
             }
 
             const { scrollLeft, scrollWidth, clientWidth, scrollTop, scrollHeight, clientHeight } = thumbsWrapper;
-            const disableScroll = (scrollWidth - scrollLeft) > 2 * clientWidth
-                    || (scrollHeight - scrollTop) > 2 * clientHeight;
+            const disableScroll = (scrollWidth - scrollLeft) > 2 * clientWidth ||
+                    (scrollHeight - scrollTop) > 2 * clientHeight;
             this.autoScroll = !disableScroll;
         },
         paused(state) {
@@ -195,7 +195,7 @@ export default {
             }
         },
         subscribe(domainObject) {
-            this.date = ''
+            this.date = '';
             this.imageUrl = '';
             this.openmct.objects.get(this.keystring)
                 .then((object) => {
@@ -234,5 +234,5 @@ export default {
             this.imageUrl = this.imageFormat.format(datum);
         }
     }
-}
+};
 </script>

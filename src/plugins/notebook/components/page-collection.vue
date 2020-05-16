@@ -68,7 +68,7 @@ export default {
     },
     data() {
         return {
-        }
+        };
     },
     watch: {
     },
@@ -102,7 +102,10 @@ export default {
                 pages[0].isSelected = true;
             }
 
-            this.$emit('updatePage', { pages, id });
+            this.$emit('updatePage', {
+                pages,
+                id
+            });
         },
         selectPage(id) {
             const pages = this.pages.map(page => {
@@ -112,7 +115,10 @@ export default {
                 return page;
             });
 
-            this.$emit('updatePage', { pages, id });
+            this.$emit('updatePage', {
+                pages,
+                id
+            });
 
             // Add test here for whether or not to toggle the nav
             if (this.sidebarCoversEntries) {
@@ -122,11 +128,14 @@ export default {
         updatePage(newPage) {
             const id = newPage.id;
             const pages = this.pages.map(page =>
-                page.id === id
-                    ? newPage
-                    : page);
-            this.$emit('updatePage', { pages, id });
+                page.id === id ?
+                    newPage :
+                    page);
+            this.$emit('updatePage', {
+                pages,
+                id
+            });
         }
     }
-}
+};
 </script>

@@ -118,6 +118,7 @@ define(
                         $injector.get("telemetryService"));
                 } catch (e) {
                     $log.info("Telemetry service unavailable");
+
                     return (this.telemetryService = null);
                 }
             };
@@ -163,6 +164,7 @@ define(
             if (!fullRequest.id) {
                 fullRequest.id = domainObject.getId();
             }
+
             if (!fullRequest.key) {
                 fullRequest.key = domainObject.getId();
             }
@@ -333,7 +335,7 @@ define(
          * domain object model has a "telemetry" field.
          */
         TelemetryCapability.appliesTo = function (model) {
-            return (model && model.telemetry) ? true : false;
+            return Boolean(model && model.telemetry);
         };
 
         return TelemetryCapability;

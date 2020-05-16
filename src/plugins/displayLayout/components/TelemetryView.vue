@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import LayoutFrame from './LayoutFrame.vue'
-import printj from 'printj'
+import LayoutFrame from './LayoutFrame.vue';
+import printj from 'printj';
 import conditionalStylesMixin from "../mixins/objectStyles-mixin";
 
 const DEFAULT_TELEMETRY_DIMENSIONS = [10, 5],
@@ -98,8 +98,8 @@ export default {
         gridSize: {
             type: Array,
             required: true,
-            validator: (arr) => arr && arr.length === 2
-                && arr.every(el => typeof el === 'number')
+            validator: (arr) => arr && arr.length === 2 &&
+                arr.every(el => typeof el === 'number')
         },
         initSelect: Boolean,
         index: {
@@ -113,15 +113,17 @@ export default {
             formats: undefined,
             domainObject: undefined,
             currentObjectPath: undefined
-        }
+        };
     },
     computed: {
         showLabel() {
             let displayMode = this.item.displayMode;
+
             return displayMode === 'all' || displayMode === 'label';
         },
         showValue() {
             let displayMode = this.item.displayMode;
+
             return displayMode === 'all' || displayMode === 'value';
         },
         styleObject() {
@@ -156,6 +158,7 @@ export default {
             }
 
             let alarm = this.limitEvaluator && this.limitEvaluator.evaluate(this.datum, this.valueMetadata);
+
             return alarm && alarm.cssClass;
         }
     },
@@ -251,6 +254,6 @@ export default {
             this.openmct.contextMenu._showContextMenuForObjectPath(this.currentObjectPath, event.x, event.y, CONTEXT_MENU_ACTIONS);
         }
     }
-}
+};
 
 </script>

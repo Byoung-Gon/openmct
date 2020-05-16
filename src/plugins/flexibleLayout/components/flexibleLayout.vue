@@ -87,10 +87,10 @@
 </template>
 
 <script>
-import ContainerComponent  from './container.vue';
+import ContainerComponent from './container.vue';
 import Container from '../utils/container';
 import Frame from '../utils/frame';
-import ResizeHandle from  './resizeHandle.vue';
+import ResizeHandle from './resizeHandle.vue';
 import DropHint from './dropHint.vue';
 import RemoveAction from '../../remove/RemoveAction.js';
 
@@ -106,6 +106,7 @@ function sizeItems(items, newItem) {
         if (!newItem.size || newItem.size === 100) {
             newItem.size = Math.round(100 / items.length);
         }
+
         let oldItems = items.filter(item => item !== newItem);
         // Resize oldItems to fit inside remaining space;
         let remainder = 100 - newItem.size;
@@ -125,6 +126,7 @@ function sizeToFill(items) {
     if (items.length === 0) {
         return;
     }
+
     let oldTotal = items.reduce((total, item) => total + item.size, 0);
     items.forEach((item) => {
         item.size = Math.round(item.size * 100 / oldTotal);
@@ -149,14 +151,14 @@ export default {
         return {
             domainObject: this.layoutObject,
             newFrameLocation: []
-        }
+        };
     },
     computed: {
         layoutDirectionStr() {
             if (this.rowsLayout) {
-                return 'Rows'
+                return 'Rows';
             } else {
-                return 'Columns'
+                return 'Columns';
             }
         },
         containers() {
@@ -252,7 +254,7 @@ export default {
 
             this.removeFromComposition(frame.domainObjectIdentifier)
                 .then(() => {
-                    sizeToFill(container.frames)
+                    sizeToFill(container.frames);
                     this.setSelectionToParent();
                 });
         },
@@ -276,7 +278,7 @@ export default {
             if (index === -1) {
                 return containerPos !== 0;
             } else {
-                return containerPos !== index && (containerPos - 1) !== index
+                return containerPos !== index && (containerPos - 1) !== index;
             }
         },
         persist(index) {
@@ -312,7 +314,7 @@ export default {
         },
         getContainerSize(size) {
             if (size < MIN_CONTAINER_SIZE) {
-                return MIN_CONTAINER_SIZE
+                return MIN_CONTAINER_SIZE;
             } else if (size > (this.maxMoveSize - MIN_CONTAINER_SIZE)) {
                 return (this.maxMoveSize - MIN_CONTAINER_SIZE);
             } else {
@@ -332,6 +334,7 @@ export default {
             } else {
                 this.containers.splice(toIndex, 0, container);
             }
+
             this.persist();
         },
         removeChildObject(identifier) {
@@ -348,5 +351,5 @@ export default {
             this.persist();
         }
     }
-}
+};
 </script>
